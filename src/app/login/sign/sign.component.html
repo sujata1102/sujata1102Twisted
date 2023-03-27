@@ -1,0 +1,206 @@
+<div class="modal hide fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-title text-center">
+<!-- Pills navs -->
+<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="tab-login" data-bs-toggle="tab" data-bs-target="#pills-login"
+      aria-controls="pills-login" aria-selected="true">Login</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="tab-register" data-bs-toggle="tab" data-bs-target="#pills-register"
+      aria-controls="pills-register" aria-selected="false">Register</a>
+  </li>
+</ul>
+<!-- Pills navs -->
+
+<!-- Pills content -->
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+    <form [formGroup]="loginB" (ngSubmit)="loginB.valid && signInForm()">
+      <div class="text-center mb-3">
+        <p>Sign in with:</p>
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-facebook-f"></i>
+        </button>
+
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-google"></i>
+        </button>
+
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-twitter"></i>
+        </button>
+
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-github"></i>
+        </button>
+      </div>
+
+      <p class="text-center">or:</p>
+
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input type="email" id="email" class="form-control" formControlName="email"/>
+        <label class="form-label" for="loginName">Email</label>
+        <div *ngIf="emailctr.touched && emailctr.invalid" class="alert alert-danger">
+          <div *ngIf="emailctr.hasError('required')">
+            Email is required
+          </div>
+          <div *ngIf="emailctr.hasError('email')">
+            Correct Email is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input type="password" id="password" class="form-control" formControlName="password"/>
+        <label class="form-label" for="loginPassword">Password</label>
+        <div *ngIf="passctr.touched && passctr.invalid" class="alert alert-danger">
+          <div *ngIf="passctr.hasError('required')">
+            Password is required.
+          </div>
+          <div *ngIf="passctr.hasError('minlength')">
+            Password should be 6 characters atleast.
+          </div>
+          <div *ngIf="passctr.hasError('maxlength')">
+            Password won't accept more than 20 characters.
+          </div>
+          <div *ngIf="passctr.hasError('pattern')">
+            Password should include at least 1 alphabet, 1 number and 1 special character.
+          </div>
+      </div>
+      </div>
+
+      <!-- 2 column grid layout -->
+      <div class="row mb-4">
+        <div class="col-md-6 d-flex justify-content-center">
+          <!-- Checkbox -->
+          <div class="form-check mb-3 mb-md-0">
+            <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+            <label class="form-check-label" for="loginCheck"> Remember me </label>
+          </div>
+        </div>
+
+        <div class="col-md-6 d-flex justify-content-center">
+          <!-- Simple link -->
+          <a href="#!">Forgot password?</a>
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="loginB.invalid">Sign in</button>
+
+      <!-- Register buttons -->
+      <div class="text-center">
+        <p>Not a member? </p>
+      </div>
+    </form>
+  </div>
+  <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+    <form [formGroup]="registerB" (ngSubmit)="registerB.valid && signUpForm()">
+      <div class="text-center mb-3">
+        <p>Sign up with:</p>
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-facebook-f"></i>
+        </button>
+
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-google"></i>
+        </button>
+
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-twitter"></i>
+        </button>
+
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-github"></i>
+        </button>
+      </div>
+
+      <p class="text-center">or:</p>
+
+      <!-- Name input -->
+      <div class="form-outline mb-4">
+        <input type="text" id="fname" class="form-control" formControlName="fname"/>
+        <label class="form-label" for="registerName">First Name</label>
+        <div *ngIf="fnamectr.touched && fnamectr.invalid" class="alert alert-danger">
+          <div *ngIf="fnamectr.hasError('required')">
+            First Name is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Lastname input -->
+      <div class="form-outline mb-4">
+        <input type="text" id="lname" class="form-control" formControlName="lname"/>
+        <label class="form-label" for="registerUsername">Last Name</label>
+        <div *ngIf="lnamectr.touched && lnamectr.invalid" class="alert alert-danger">
+          <div *ngIf="lnamectr.hasError('required')">
+            Last Name is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input type="email" id="email" class="form-control" formControlName="email"/>
+        <label class="form-label" for="registerEmail">Email</label>
+        <div *ngIf="reemailctr.touched && reemailctr.invalid" class="alert alert-danger">
+          <div *ngIf="reemailctr.hasError('required')">
+            Email is required
+          </div>
+          <div *ngIf="reemailctr.hasError('email')">
+            Correct Email is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input type="password" id="password" class="form-control" formControlName="password"/>
+        <label class="form-label" for="registerPassword">Password</label>
+        <div *ngIf="repassctr.touched && repassctr.invalid" class="alert alert-danger">
+          <div *ngIf="repassctr.hasError('required')">
+            Password is required.
+          </div>
+          <div *ngIf="repassctr.hasError('minlength')">
+            Password should be 6 characters atleast.
+          </div>
+          <div *ngIf="repassctr.hasError('maxlength')">
+            Password won't accept more than 20 characters.
+          </div>
+          <div *ngIf="repassctr.hasError('pattern')">
+            Password should include at least 1 alphabet, 1 number and 1 special character.
+          </div>
+      </div>
+      </div>
+
+      <!-- Checkbox -->
+      <!-- <div class="form-check d-flex justify-content-center mb-4">
+        <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+          aria-describedby="registerCheckHelpText" />
+        <label class="form-check-label" for="registerCheck">
+          I have read and agree to the terms
+        </label>
+      </div> -->
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-3" [disabled]="registerB.invalid">Sign in</button>
+    </form>
+  </div>
+</div>
+<!-- Pills content -->
+</div>
+</div>
+</div>
+</div>
+</div>

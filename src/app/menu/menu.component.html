@@ -1,0 +1,144 @@
+<section id="menu" class="menu section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-header">
+      <h2>Our Menu</h2>
+      <p>Order From <span>Twisted Toppings Menu</span></p>
+    </div>
+    <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+      <li class="nav-item">
+        <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-pizza">
+        <h4>Traditional Topping Pizza</h4>
+        </a>
+      </li><!-- End tab nav item -->
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-bread">
+        <h4>Garlic Bread</h4>
+        </a>
+      </li><!-- End tab nav item -->
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-fries">
+        <h4>French Fries</h4>
+        </a>
+      </li><!-- End tab nav item -->
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-beverages">
+          <h4>Beverages</h4>
+        </a>
+      </li><!-- End tab nav item -->
+    </ul>
+
+  <div class="example">
+    <input type="text" placeholder="Search.." name="search" class="form-control" [(ngModel)]="filter">
+  </div>
+  <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+  <div class="tab-pane fade active show" id="menu-pizza">
+    <div class="tab-header text-center">
+      <p>Menu</p>
+      <h3>Traditional Topping Pizza</h3>
+    </div>
+  <div class="row gy-5">
+    <div class="card-group">
+      <div *ngFor="let pizza of filtered" class="col-4">
+        <div class="card">
+          <img class="card-img card-img-top" [src]="pizza.image"
+          [alt]="pizza.name">
+        <div class="card-body">
+          <h5 class="card-title"
+          [routerLink]="['/menu',pizza.id]"
+          [style.cursor]="'pointer'">{{pizza.id}}</h5>
+          <strong>{{pizza.name | uppercase}}</strong>
+          <p class="card-text" [title]="pizza.description">{{pizza.description | slice:0:49}}</p>
+          <p class="price">{{pizza.price | currency: 'INR' : 'symbol' :  '1.0-2'}}</p>
+          <p class="card-text"><app-star [rating]="pizza.rating" (ratingClick)="onRatingClicked($event)"></app-star></p>
+          <a class="btn btn-warning" (click)="addtocart($event,pizza)" >add to cart</a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  </div><!-- End Pizza Menu Content -->
+
+  <div class="tab-pane fade" id="menu-bread">
+    <div class="tab-header text-center">
+      <p>Menu</p>
+      <h3>Garlic Bread</h3>
+    </div>
+
+  <div class="row gy-5">
+    <div class="card-group">
+        <div *ngFor="let garlic_bread of filteredG">
+          <div class="card">
+            <img class="card-img card-img-top" [src]="garlic_bread.image"
+            [alt]="garlic_bread.name">
+          <div class="card-body">
+            <h5 class="card-title"
+            [routerLink]="['/menu',garlic_bread.id]"
+            [style.cursor]="'pointer'">{{garlic_bread.id}}</h5>
+            <strong>{{garlic_bread.name | uppercase}}</strong>
+            <p class="price">{{garlic_bread.price | currency: 'INR' : 'symbol' :  '1.0-2'}}</p>
+            <p class="card-text"><app-star [rating]="garlic_bread.rating" (ratingClick)="onRatingClicked($event)"></app-star></p>
+            <a class="btn btn-warning" (click)="addtocart($event,garlic_bread)" >add to cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div><!-- End Bread Menu Content -->
+
+  <div class="tab-pane fade" id="menu-fries">
+    <div class="tab-header text-center">
+      <p>Menu</p>
+      <h3>French Fries</h3>
+    </div>
+  <div class="row gy-5">
+    <div class="card-group">
+      <div *ngFor="let french_frie of filteredF">
+        <div class="card">
+          <img class="card-img card-img-top" [src]="french_frie.image"
+          [alt]="french_frie.name">
+        <div class="card-body">
+          <h5 class="card-title"
+          [routerLink]="['/menu',french_frie.id]"
+          [style.cursor]="'pointer'">{{french_frie.id}}</h5>
+          <strong>{{french_frie.name | uppercase}}</strong>
+          <p class="price">{{french_frie.price | currency: 'INR' : 'symbol' :  '1.0-2'}}</p>
+          <p class="card-text"><app-star [rating]="french_frie.rating" (ratingClick)="onRatingClicked($event)"></app-star></p>
+          <a class="btn btn-warning" (click)="addtocart($event,french_frie)" >add to cart</a>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div><!-- End Fries Menu Content -->
+
+  <div class="tab-pane fade" id="menu-beverages">
+    <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>Beverages</h3>
+    </div>
+  <div class="row gy-5">
+    <div class="card-group">
+      <div *ngFor="let beverage of filteredB">
+        <div class="card">
+          <img class="card-img card-img-top" [src]="beverage.image"
+          [alt]="beverage.name">
+        <div class="card-body">
+          <h5 class="card-title"
+          [routerLink]="['/menu',beverage.id]"
+          [style.cursor]="'pointer'">{{beverage.id}}</h5>
+          <strong>{{beverage.name | uppercase}}</strong>
+          <p class="price">{{beverage.price | currency: 'INR' : 'symbol' :  '1.0-2'}}</p>
+          <p class="card-text"><app-star [rating]="beverage.rating" (ratingClick)="onRatingClicked($event)"></app-star></p>
+          <a class="btn btn-warning" (click)="addtocart($event,beverage)" >add to cart</a>
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div><!-- End Beverages Menu Content -->
+
+  </div>
+  </div>
+  </section>
+  <router-outlet></router-outlet>

@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row gy-5">
+    <div class="card-group">
+        <div *ngIf = "pizza$ | async as pizza">
+        <div class="card">
+          <img class="card-img card-img-top" [src]="pizza.image"
+          [alt]="pizza.name">
+        <div class="card-body">
+          <strong>{{pizza.name | uppercase}}</strong>
+          <p class="card-text">{{pizza.description}}</p>
+          <p class="price">{{pizza.price | currency: 'INR' : 'symbol' :  '1.0-2'}}</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <!-- End Pizza Menu Content -->
+
+    <div class="row gy-5">
+      <div class="card-group">
+          <div *ngIf = "garlic_bread$ | async as bread">
+          <div class="card">
+            <img class="card-img card-img-top" [src]="bread.image"
+            [alt]="bread.name">
+          <div class="card-body">
+            <h5 class="card-title">{{bread.id}}</h5>
+            <strong>{{bread.name | uppercase}}</strong>
+            <p class="price">{{bread.price | currency: 'INR' : 'symbol' :  '1.0-2'}}
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <!-- End Garlic Bread Menu Content -->
+
+    <div class="row gy-5">
+      <div class="card-group">
+          <div *ngIf = "french_frie$ | async as frie">
+          <div class="card">
+            <img class="card-img card-img-top" [src]="frie.image"
+            [alt]="frie.name">
+          <div class="card-body">
+            <h5 class="card-title">{{frie.id}}</h5>
+            <strong>{{frie.name | uppercase}}</strong>
+            <p class="price">{{frie.price | currency: 'INR' : 'symbol' :  '1.0-2'}}</p>
+
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <!-- End Frech Fries Menu Content -->
+
+    <div class="row gy-5">
+      <div class="card-group">
+          <div *ngIf = "beverage$ | async as beverage">
+          <div class="card">
+            <img class="card-img card-img-top" [src]="beverage.image"
+            [alt]="beverage.name">
+          <div class="card-body">
+            <h5 class="card-title">{{beverage.id}}</h5>
+            <strong>{{beverage.name | uppercase}}</strong>
+            <p class="price">{{beverage.price | currency: 'INR' : 'symbol' :  '1.0-2'}}</p>
+
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <!-- End Beverages Menu Content -->
+
+    <div class="row btnclick">
+      <div class="col-8">
+        <button class="btn btn-warning"(click)="goBack()">back</button>
+      </div>
+      <div class="col-3">
+        <button class="btn btn-warning"(click)="prevItem()">Previous</button>
+        <button class="btn btn-warning"(click)="nextItem()">Next</button>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,106 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$TwistedToppings-primary: mat.define-palette(mat.$indigo-palette);
+$TwistedToppings-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$TwistedToppings-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$TwistedToppings-theme: mat.define-light-theme((
+  color: (
+    primary: $TwistedToppings-primary,
+    accent: $TwistedToppings-accent,
+    warn: $TwistedToppings-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($TwistedToppings-theme);
+
+/* You can add global styles to this file, and also import other style files */
+/*body{
+	background:linear-gradient(to right,white,grey);
+}*/
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import 'node_modules/bootstrap-icons';
+#bg-video {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  min-width: 100%;
+  min-height: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: -100;
+  // background-image: url("assets/img/about/about1.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/*section*/
+section {
+overflow: hidden;
+padding: 80px 0;
+}
+
+.section-bg {
+background-color: #fff;
+}
+#about{
+background:linear-gradient(to right,#FFF3E4,#F0ECE3);
+}
+#contact{
+background-color:white;
+}
+.section-header {
+text-align: center;
+padding-bottom: 30px;
+}
+
+.section-header h2 {
+font-size: 13px;
+letter-spacing: 1px;
+font-weight: 400;
+margin: 0;
+padding: 0;
+color: #7f7f90;
+text-transform: uppercase;
+}
+
+.section-header p {
+margin: 0;
+font-size: 48px;
+font-weight: 400;
+}
+
+.section-header p span {
+color: red;
+}
+.ng-dirty.ng-invalid:not(form){
+  border-bottom: 3px solid red;
+}
+
+.ng-dirty.ng-valid:not(form){
+  border-bottom: 3px solid green;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
